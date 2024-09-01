@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mt-4">Heart Disease Prediction</h2>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label>Age</label>
+                <input type="number" class="form-control" name="age" required>
+            </div>
+            <div class="form-group">
+                <label>Sex (1 = Male, 0 = Female)</label>
+                <input type="number" class="form-control" name="sex" required>
+            </div>
+            <div class="form-group">
+                <label>Chest Pain Type (0-3)</label>
+                <input type="number" class="form-control" name="cp" required>
+            </div>
+            <div class="form-group">
+                <label>Resting Blood Pressure</label>
+                <input type="number" class="form-control" name="trestbps" required>
+            </div>
+            <div class="form-group">
+                <label>Cholesterol</label>
+                <input type="number" class="form-control" name="chol" required>
+            </div>
+            <div class="form-group">
+                <label>Fasting Blood Sugar > 120 mg/dl (1 = True, 0 = False)</label>
+                <input type="number" class="form-control" name="fbs" required>
+            </div>
+            <div class="form-group">
+                <label>Resting ECG Results (0-2)</label>
+                <input type="number" class="form-control" name="restecg" required>
+            </div>
+            <div class="form-group">
+                <label>Maximum Heart Rate Achieved</label>
+                <input type="number" class="form-control" name="thalach" required>
+            </div>
+            <div class="form-group">
+                <label>Exercise Induced Angina (1 = Yes, 0 = No)</label>
+                <input type="number" class="form-control" name="exang" required>
+            </div>
+            <div class="form-group">
+                <label>Oldpeak (ST depression induced by exercise)</label>
+                <input type="number" class="form-control" name="oldpeak" required>
+            </div>
+            <div class="form-group">
+                <label>Slope of the peak exercise ST segment (0-2)</label>
+                <input type="number" class="form-control" name="slope" required>
+            </div>
+            <div class="form-group">
+                <label>Number of Major Vessels (0-3)</label>
+                <input type="number" class="form-control" name="ca" required>
+            </div>
+            <div class="form-group">
+                <label>Thalassemia (3 = Normal, 6 = Fixed Defect, 7 = Reversible Defect)</label>
+                <input type="number" class="form-control" name="thal" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        {% if prediction_text %}
+        <h4 class="text-center mt-4">{{ prediction_text }}</h4>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
